@@ -1,6 +1,7 @@
 # TrackThemBros
 
 ## Description
+TrakThemBros is a command line application that responds to user input to assist in tracking employees information within a company 
 
 ## Table of Contents
 - [Description](#Description)
@@ -10,11 +11,11 @@
 - [Reach Out](#Questions)
 
 ## Installation
-
-## Usage
+npm install mysql2
 npm install inquirer
 npm install console.table --save
-npm install mysql2
+
+## Usage
 
 ## Demo
 
