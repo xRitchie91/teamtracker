@@ -12,7 +12,11 @@
 ## Installation
 
 ## Usage
+npm install inquirer
+npm install console.table --save
+npm install mysql2
 
 ## Demo
 
 ## Questions
+[xRitchie91](https://github.com/xRitchie91)
