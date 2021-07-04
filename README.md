@@ -11,9 +11,9 @@ TrackThemBros is a command line application that responds to user input to assis
 - [Reach Out](#Questions)
 
 ## Installation
-npm install mysql2
-npm install inquirer
-npm install console.table --save
+- npm install mysql2
+- npm install inquirer
+- npm install console.table --save
 
 ## Usage
 
