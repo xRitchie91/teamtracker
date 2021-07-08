@@ -242,7 +242,7 @@ const addEmployee = () => {
   })
 }
 
-// inserts data on new employee into database
+// adds new employee data into database
 const completeAddEmployee = (newEmployeeData) => {
   const sql = `INSERT INTO employees (first_name, last_name, role_id, manager_id) 
      VALUES (?,?,?,?)`;
