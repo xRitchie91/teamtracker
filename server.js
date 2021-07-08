@@ -149,28 +149,39 @@ const addRole = () => {
   deptArr = []
   newRoleData = {}
   const sql = `SELECT dept_name FROM departments`;
-  
+
   db.query(sql, (_err, res) => {
-    for (let i = 0; i < res.length; i+1) {
-    dept = res[i].dept_name
-    deptArr.push(dept)
+    for (let i = 0; i < res.length; i + 1) {
+      dept = res[i].dept_name
+      deptArr.push(dept)
     }
-  
+
     // new role information here
     inquirer.prompt([{
-    type: 'input',
-    name: 'addRole',
-    message: 'Job title of the new role?'
+      type: 'input',
+      name: 'addRole',
+      message: 'Job title of the new role?'
     }, {
-    type: 'input',
-    name: 'addRoleSalary',
-    message: 'New role salary?'
+      type: 'input',
+      name: 'addRoleSalary',
+      message: 'New role salary?'
     }, {
-    type: 'list',
-    name: 'deptOfRole',
-    message: 'New role department?',
-    choices: deptArr.map(dept => `${dept}`)
+      type: 'list',
+      name: 'deptOfRole',
+      message: 'New role department?',
+      choices: deptArr.map(dept => `${dept}`)
     }]).then(dept => {
-    newRoleData.newRole = dept.addRole
-    newRoleData.newSalary = dept.addRoleSalary
-    newRoleData.dept = dept.deptOfRole
+      newRoleData.newRole = dept.addRole
+      newRoleData.newSalary = dept.addRoleSalary
+      newRoleData.dept = dept.deptOfRole
+
+      const sql = `SELECT id FROM departments WHERE dept_name = ?`;
+      const params = [newRoleData.dept]
+      db.query(sql, params, (_err, res) => {
+        newRoleData.id = res[0].id
+        completeAddRole(newRoleData);
+      })
+    })
+  })
+}
+
