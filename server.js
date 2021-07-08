@@ -185,3 +185,75 @@ const addRole = () => {
   })
 }
 
+// adds new role to database w/ mySQL
+const completeAddRole = (newRoleData) => {
+  const sql = `INSERT INTO roles (title, salary, dept_id) VALUES (?,?,?)`;
+  const params = [newRoleData.newRole, newRoleData.newSalary, newRoleData.id]
+  db.query(sql, params, (err, _res) => {
+    if (err) throw err;
+    console.log(`${newRoleData.newRole} added successfully!`)
+    startMenu();
+  })
+}
+
+// new employee object
+newEmployeeData = {};
+
+// add an employee
+const addEmployee = () => {
+  roleArr = []
+
+  const sql = `SELECT roles.title FROM roles`;
+  db.query(sql, (err, res) => {
+    if (err) throw err
+    for (let i = 0; i < res.length; i + 1) {
+      role = `${res[i].title}`
+      roleArr.push(role)
+    }
+
+    // new employee prompts
+    inquirer.prompt([{
+      type: 'input',
+      name: 'first_name',
+      message: `Employee's first name:`
+    }, {
+      type: 'input',
+      name: 'last_name',
+      message: `Employee's last name:`
+    }, {
+      type: 'list',
+      name: 'title',
+      message: 'Select employee role',
+      choices: roleArr.map(role => `${role}`)
+    }])
+      .then(employee => {
+        managerArr = [];
+        newEmployeeData.first_name = employee.first_name
+        newEmployeeData.last_name = employee.last_name
+        newEmployeeData.title = employee.title
+
+        const sql = `SELECT id FROM roles WHERE roles.title = ?`
+        const params = [newEmployeeData.title]
+        db.query(sql, params, (_err, res) => {
+          newEmployeeData.role_id = res[0].id
+          selectManager(newEmployeeData);
+        })
+      })
+  })
+}
+
+// inserts data on new employee into database
+const completeAddEmployee = (newEmployeeData) => {
+  const sql = `INSERT INTO employees (first_name, last_name, role_id, manager_id) 
+     VALUES (?,?,?,?)`;
+  const params = [newEmployeeData.first_name, newEmployeeData.last_name, newEmployeeData.role_id, newEmployeeData.manager_id]
+
+  db.query(sql, params, (err, _result) => {
+    if (err) {
+      console.log(err)
+    }
+    console.log(`New ${newEmployeeData.title}, ${newEmployeeData.first_name} ${newEmployeeData.last_name}, added successfully.`)
+    return startMenu();
+  })
+}
+
