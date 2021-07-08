@@ -1,6 +1,4 @@
-// Employee Tracker
-
-// require express and inquirer packages
+// dependencies
 const express = require('express');
 const { createPromptModule } = require('inquirer');
 
@@ -21,7 +19,7 @@ app.use(express.json());
 
 app.use('/api', apiRoutes)
 
-
+// prompts
 const startMenu = () => {
   inquirer.prompt({
     type: 'list',
@@ -58,34 +56,47 @@ const startMenu = () => {
             viewRoles();
             break;
 
-        case 'Add An Employee':
+        case 'Add Employee':
             addEmployee();
             break;
 
-        case 'Add A Role':
+        case 'Add Role':
             addRole();
             break;
 
-        case 'Add A Department':
+        case 'Add Department':
             addDept();
             break;
 
-        case 'Update An Employee Role':
+        case 'Update Employee Role':
             selectEmployee();
             break;
 
-        case 'Delete A Department':
+        case 'Delete Department':
             selectDept();
             break;
 
-        case 'Delete A Role':
+        case 'Delete Role':
             chooseRoleDelete();
             break;
 
-        case 'Delete An Employee':
+        case 'Delete Employee':
             chooseEmployeeDelete();
             break;
         }
     })
 }
+
+// user options
+// departments
+const viewDepartments = () => {
+  const sql = 'SELECT * FROM departments';
+  db.query(sql, (err, res) => {
+    if (err) throw err
+    console.table(res)
+    startMenu();
+  })
+}
+
+
 
