@@ -88,7 +88,7 @@ const startMenu = () => {
 }
 
 // user options
-// departments
+// view company departments
 const viewDepartments = () => {
   const sql = 'SELECT * FROM departments';
   db.query(sql, (err, res) => {
@@ -98,5 +98,30 @@ const viewDepartments = () => {
   })
 }
 
-
-
+// view employee roles
+const viewRoles = () => {
+  const sql = 'SELECT roles.title, roles.id, roles.salary, departments.dept_name FROM roles JOIN departments ON roles.dept_id = departments.id';
+  
+  db.query(sql, (err, res) => {
+    if (err) throw err
+    console.table(res)
+    startMenu();
+  })
+  }
+  
+  // view employees
+  const viewEmployees= () => {
+  
+  const sql= `SELECT employees.id, employees.first_name, employees.last_name, employees.manager_id, roles.title, roles.salary, departments.dept_name 
+  FROM employees 
+  JOIN roles ON employees.role_id = roles.id 
+  JOIN departments ON roles.dept_id = departments.id 
+  ORDER BY employees.id;`
+  
+  
+    db.query(sql, (err, res) => {
+    if (err) throw err
+    console.table(res)
+    startMenu();
+    })
+  }
