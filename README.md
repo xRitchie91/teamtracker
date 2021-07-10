@@ -8,16 +8,26 @@ TrackThemBros is a command line application that responds to user input to assis
 - [Installation](#Installation)
 - [Usage](#Usage)
 - [Demo](#Demo)
-- [Reach Out](#Questions)
+- [Contributions](#Contributors)
 
 ## Installation
+- npm start
+- npm init -y
+- npm install
 - npm install mysql2
 - npm install inquirer
-- npm install console.table --save
+- npm install express
 
-## Usage
+## Repository
+[trackthembros](https://github.com/trackthembros)
 
 ## Demo
+- Screenshots
 
-## Questions
-[xRitchie91](https://github.com/xRitchie91)
+- Walkthrough
+
+## Contributors
+- [Ritchie Ortiz](https://github.com/xRitchie91)
+- [Kyle McKinley](https://github.com/kjmckinley)
+- [Nancy Rosas](https://github.com/nancyrosas0) who graciously assisted with troubleshooting and debugging.
+- [Lacey Griffith](https://github.com/lacey-griffith) who walked so we could run.
