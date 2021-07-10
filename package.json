@@ -1,17 +1,26 @@
 {
   "name": "trackthembros",
   "version": "1.0.0",
-  "description": "",
+  "description": "TrackThemBros is a command line application that responds to user input to assist in tracking employees information within a company",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "test": "jest",
+    "start": "node index.js",
+    "dev": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "console.table": "^0.10.0",
+    "express": "^4.17.1",
     "inquirer": "^8.1.1",
+    "mysql": "^2.18.1",
     "mysql2": "^2.2.5"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://www.github.com/xRitchie91"
+  },
+  "keywords": []
 }
