@@ -3,7 +3,7 @@ module.exports = function(obj, ...properties) {
 
   properties.forEach(property => {
 
-    // if the property is blank or doesn't exist, add to the errors array
+    // if property doesn't exist, add to errors array
     if (obj[property] === undefined || obj[property] === '') {
       errors.push(`No ${property} specified.`);
     }
