@@ -5,7 +5,7 @@ const db = require('../../db/connection');
 const checkInput = require('../../utils/checkInput');
 
 
-// function that gets all employees
+// gets employees
 router.get('/employees', (req, res) => {
     const sql = `SELECT employees.id, employees.first_name, employees.last_name, 
     roles.title, roles.salary, 
@@ -28,7 +28,7 @@ router.get('/employees', (req, res) => {
     })
 })
 
-// function that gets one employee
+// gets employee
 router.get('/employees/:id', (req, res) => {
     const sql = `SELECT * FROM employees WHERE id = ?`;
     const params = [req.params.id]
@@ -48,7 +48,7 @@ router.get('/employees/:id', (req, res) => {
     })
 });
 
-// function that deletes an employee
+// deletes an employee
 router.delete('/employee/:id', (req, res) => {
     const sql = `DELETE FROM employees WHERE id =?`;
     const params = [req.params.id]
@@ -71,7 +71,7 @@ router.delete('/employee/:id', (req, res) => {
     })
 });
 
-// adds employee to db
+// adds employee
 router.post('/employee', ({ body }, res) => {
     const errors = checkInput(body, 'first_name', 'last_name', 'role_id', 'manager_id')
 
@@ -96,7 +96,7 @@ router.post('/employee', ({ body }, res) => {
     })
 })
 
-// function that updates employee's role
+// updates employee role
 router.put('/employee/:id', (req, res) => {
     const errors = checkInput(req.body, 'role_id');
 
