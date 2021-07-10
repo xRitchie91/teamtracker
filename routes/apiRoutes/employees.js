@@ -29,7 +29,7 @@ router.get('/employees', (req, res) => {
 })
 
 // gets employee
-router.get('/employees/:id', (req, res) => {
+router.get('../../apiRoutes/employees/:id', (req, res) => {
     const sql = `SELECT * FROM employees WHERE id = ?`;
     const params = [req.params.id]
 
@@ -49,7 +49,7 @@ router.get('/employees/:id', (req, res) => {
 });
 
 // deletes an employee
-router.delete('/employee/:id', (req, res) => {
+router.delete('../../apiRoutes/employee/:id', (req, res) => {
     const sql = `DELETE FROM employees WHERE id =?`;
     const params = [req.params.id]
     db.query(sql, params, (err, result) => {
@@ -72,7 +72,7 @@ router.delete('/employee/:id', (req, res) => {
 });
 
 // adds employee
-router.post('/employee', ({ body }, res) => {
+router.post('../../apiRoutes/employee', ({ body }, res) => {
     const errors = checkInput(body, 'first_name', 'last_name', 'role_id', 'manager_id')
 
     if (errors) {
@@ -97,7 +97,7 @@ router.post('/employee', ({ body }, res) => {
 })
 
 // updates employee role
-router.put('/employee/:id', (req, res) => {
+router.put('../../apiRoutes/employee/:id', (req, res) => {
     const errors = checkInput(req.body, 'role_id');
 
     if (errors) {

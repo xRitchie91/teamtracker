@@ -5,7 +5,7 @@ const db = require('../../db/connection');
 const checkInput = require('../../utils/checkInput');
 
 // get retrieves all departments 
-router.get('/departments', (req, res) => {
+router.get('../../apiRoutes/departments', (req, res) => {
   const sql = `SELECT * FROM departments`;
 
   db.query(sql, (err, rows) => {
@@ -21,7 +21,7 @@ router.get('/departments', (req, res) => {
 });
 
 // creates department
-router.post('/department', ({ body }, res) => {
+router.post('../../apiRoutes/department', ({ body }, res) => {
   const errors = checkInput(body, 'dept_name')
   if (errors) {
     res.json({ error: errors });
@@ -45,7 +45,7 @@ router.post('/department', ({ body }, res) => {
 module.exports = router;
 
 // deletes the department 
-router.delete('/department/:id', (req, res) => {
+router.delete('../../apiRoutes/department/:id', (req, res) => {
   const sql = `DELETE FROM departments WHERE id = ?`;
   const params = [req.params.id];
 
