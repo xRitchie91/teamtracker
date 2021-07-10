@@ -457,3 +457,77 @@ const chooseRoleDelete = () => {
   })
 }
 
+// deletes selected role
+const deleteRole = (roleDelete) => {
+  const sql = `DELETE FROM roles WHERE id = ?`;
+  const params = [roleDelete.id]
+  db.query(sql, params, (err, res) => {
+    if (!res.affectedRows) {
+      console.log('Role not found')
+    }
+    console.log(`${roleDelete.title} successfully deleted.`)
+    optionsMenu();
+  })
+}
+
+// employee to be deleted
+deleteEmployee = {}
+
+// delete an employee
+const chooseEmployeeDelete = () => {
+  let deleteEmployeeArray = [];
+
+  const sql = `SELECT * FROM employees`;
+  db.query(sql, (req, res) => {
+    for (let i = 0; i < res.length; i++) {
+      let employee = `${res[i].first_name} ${res[i].last_name}`
+      deleteEmployeeArray.push(employee)
+    }
+    inquirer.prompt({
+      type: 'list',
+      name: 'deleteEmployee',
+      message: 'Which employee would you like to delete?',
+      choices: deleteEmployeeArray.map(employee => `${employee}`)
+    }).then(employee => {
+      let index = employee.deleteEmployee.indexOf(" ")
+      employeeDelete.first_name = employee.deleteEmployee.substr(0, index)
+      employeeDelete.last_name = employee.deleteEmployee.substr(index + 1)
+
+      const sql = `SELECT id FROM employees WHERE first_name = ? AND last_name = ?`;
+      const params = [employeeDelete.first_name, employeeDelete.last_name]
+      db.query(sql, params, (req, result) => {
+        employeeDelete.id = result[0].id
+        return deleteEmployee(employeeDelete)
+      })
+    })
+  })
+}
+
+// deletes selected employee
+const employeeDelete = () => {
+  const sql = `DELETE FROM employees WHERE id = ?`;
+  const params = [employeeDelete.id]
+  db.query(sql, params, (err, res) => {
+    if (!res.affectedRows) {
+      console.log('Employee not found')
+    }
+    console.log(`${employeeDelete.first_name} ${employeeDelete.last_name} successfully deleted.`)
+    optionsMenu();
+  })
+}
+
+// error catches
+// requests not found
+app.use((req, res) => {
+  res.status(404).end();
+})
+
+// connects to server after connecting to database
+db.connect(err => {
+  if (err) throw err;
+  console.log('Database connected.');
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+    optionsMenu();
+  });
+});
