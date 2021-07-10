@@ -19,8 +19,12 @@ TrackThemBros is a command line application that responds to user input to assis
 - npm install express
 
 ## Repository
+[trackthembros](https://github.com/trackthembros)
 
 ## Demo
+- Screenshots
+
+- Walkthrough
 
 ## Contributors
 - [Ritchie Ortiz](https://github.com/xRitchie91)
