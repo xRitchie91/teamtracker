@@ -4,8 +4,8 @@ const router = express.Router();
 const db = require('../../db/connection');
 const checkInput = require('../../utils/checkInput');
 
-// get retrieves roles 
-router.get('../../apiRoutes/roles', (req, res) => {
+// retrieves roles 
+router.get('/roles', (req, res) => {
   const sql = `SELECT roles.*, departments.dept_name FROM roles LEFT JOIN departments ON roles.dept_id = departments.id;`
 
   db.query(sql, (err, rows) => {
@@ -20,8 +20,8 @@ router.get('../../apiRoutes/roles', (req, res) => {
   })
 })
 
-// create command that creates a role and adds it to the database
-router.post('../../apiRoutes/role', ({ body }, res) => {
+// creates role 
+router.post('/role', ({ body }, res) => {
   const errors = checkInput(body, 'title', 'salary', 'dept_id')
   if (errors) {
     res.json({ error: errors });
@@ -44,7 +44,7 @@ router.post('../../apiRoutes/role', ({ body }, res) => {
 })
 
 // deletes selected role
-router.delete('../../apiRoutes/role/:id', (req, res) => {
+router.delete('/role/:id', (req, res) => {
   const sql = `DELETE FROM roles WHERE id = ?`;
   const params = [req.params.id];
 
@@ -54,11 +54,11 @@ router.delete('../../apiRoutes/role/:id', (req, res) => {
       return
     }
     else if (!result.affectedRows) {
-      res.json({ message: 'Role was not found.' })
+      res.json({ message: 'Role not found.' })
     }
     else {
       res.json({
-        message: 'Role was successfully deleted and removed from db.',
+        message: 'Role was successfully deleted.',
         changes: result.affectedRows,
         id: req.params.id
       })

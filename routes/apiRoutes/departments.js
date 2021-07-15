@@ -1,11 +1,11 @@
-// dependencies
+// debbie dependencies
 const express = require('express');
 const router = express.Router();
 const db = require('../../db/connection');
 const checkInput = require('../../utils/checkInput');
 
-// get retrieves all departments 
-router.get('../../apiRoutes/departments', (req, res) => {
+// retrieves all departments 
+router.get('/departments', (req, res) => {
   const sql = `SELECT * FROM departments`;
 
   db.query(sql, (err, rows) => {
@@ -21,7 +21,7 @@ router.get('../../apiRoutes/departments', (req, res) => {
 });
 
 // creates department
-router.post('../../apiRoutes/department', ({ body }, res) => {
+router.post('department', ({ body }, res) => {
   const errors = checkInput(body, 'dept_name')
   if (errors) {
     res.json({ error: errors });
@@ -44,8 +44,8 @@ router.post('../../apiRoutes/department', ({ body }, res) => {
 
 module.exports = router;
 
-// deletes the department 
-router.delete('../../apiRoutes/department/:id', (req, res) => {
+// deletes department 
+router.delete('/department/:id', (req, res) => {
   const sql = `DELETE FROM departments WHERE id = ?`;
   const params = [req.params.id];
 
