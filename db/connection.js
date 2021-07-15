@@ -1,4 +1,4 @@
-//connect to the database
+//connect to our database
 const mysql = require('mysql2');
 
 // password security

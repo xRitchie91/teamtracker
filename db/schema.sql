@@ -1,4 +1,4 @@
- -- Employee Tracker
+-- Employee Tracker
 
 DROP DATABASE IF EXISTS employeeTracker_db;
 
