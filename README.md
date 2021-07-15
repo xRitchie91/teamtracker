@@ -15,7 +15,7 @@ TrackThemBros is a command line application that responds to user input to assis
 - npm init -y
 - npm install
 - npm install [mysql2](https://www.npmjs.com/package/mysql2)
-- npm install [inquirer](npm install inquirer)
+- npm install [inquirer](https://www.npmjs.com/package/inquirer)
 - npm install [express](https://www.npmjs.com/package/express)
 - npm install [console.table](https://www.npmjs.com/package/console.table)
 
