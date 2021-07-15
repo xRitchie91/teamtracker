@@ -36,3 +36,4 @@ TrackThemBros is a command line application that responds to user input to assis
 - [Kyle McKinley](https://github.com/kjmckinley) assisted with debugging and troubleshooting.
 - [Nancy Rosas](https://github.com/nancyrosas0) who graciously assisted with troubleshooting and debugging.
 - [Lacey Griffith](https://github.com/lacey-griffith) who walked so we could run.
+- The Good People with AskBCS for helping resolve the errors and getting this application to run!
