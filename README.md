@@ -29,7 +29,9 @@ TrackThemBros is a command line application that responds to user input to assis
 
 
 ### Walkthrough
-![trackthembros-demo](https://user-images.githubusercontent.com/74946954/125868823-a77cd93e-3ebf-4f73-83a6-8a804f729b59.gif)
+[Walkthrough Video]()
+
+![Walkthrough Demo](https://user-images.githubusercontent.com/74946954/125868823-a77cd93e-3ebf-4f73-83a6-8a804f729b59.gif)
 
 ## Contributors
 - [Ritchie Ortiz](https://github.com/xRitchie91)
