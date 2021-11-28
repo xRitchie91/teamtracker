@@ -1,7 +1,7 @@
 # TeamTracker
 
 ## Description
-TrackThemBros is a command line application that responds to user input to assist in tracking employees information within a company 
+TeamTracker is a command line application that responds to user input to assist in tracking employees information within a company 
 
 ## Table of Contents
 - [Description](#Description)
